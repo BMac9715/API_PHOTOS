@@ -1,0 +1,70 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: EXTERNAL_API_PHOTOS
+  description: External API for MetaPhoto App
+basePath: /externalapi
+tags:
+  - name: Photos
+    description: External endpoint for all data about photos
+  - name: Specification
+    description: The swagger API specification
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+definitions:
+
+paths:
+  /photos:
+    get:
+      tags:
+        - Photos
+      description: Fetch all photos by filters
+      parameters:
+        - in: query
+          name: offset
+          required: false
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+          description: The numbers of items to return
+        - in: query
+          name: title
+          required: false
+      responses:
+        200:
+          description: Returns all photos filtered
+
+  /photos/{id}:
+    get:
+      tags:
+        - Photos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the photo to retrieve
+          type: integer
+      responses:
+        200:
+          description: Return all information about the specified photo id
+        404:
+          description: Photo not found
+        500:
+          description: Internal server error
+
+  /spec:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification
