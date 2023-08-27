@@ -36,9 +36,6 @@ paths:
           schema:
             type: integer
           description: The numbers of items to return
-        - in: query
-          name: title
-          required: false
       responses:
         200:
           description: Returns all photos filtered
