@@ -1,11 +1,17 @@
-FROM node:14-alpine
-LABEL Author Carmine DiMascio <cdimascio@gmail.com>
+FROM node:18-alpine
+LABEL Author Bryan Macario <bemacarioc@gmail.com>
 
-RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-COPY . /usr/src/app
-RUN npm install && npm run compile
+COPY package.json ./
+
+RUN npm i
+RUN npm i -g typescript
+RUN npm i -g ts-node
+
+COPY . .
+
+RUN npm run compile
 
 EXPOSE 3000
 
