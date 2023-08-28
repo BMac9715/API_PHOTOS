@@ -1,29 +1,15 @@
-# API_PHOTOS
 
-API for MetaPhoto App
+# EXTERNAL API FOR PHOTOS
 
-## Quick Start
+Collection of endpoints for retrieve data of jsonplaceholder.typicode.com
 
-Get started developing...
-
-```shell
-# install deps
-npm install
-
-# run in development mode
-npm run dev
-
-# run tests
-npm run test
-```
-
----
-
-## How do I modify the example API and make it my own?
-
-There are two key files:
-1. `server/routes.ts` - This references the implementation of all of your routes. Add as many routes as you like and point each route your express handler functions.
-2. `server/common/api.yaml` - This file contains your [OpenAPI spec](https://swagger.io/specification/). Describe your API here. It's recommended that you to declare any and all validation logic in this YAML. `express-no-stress-typescript`  uses [express-openapi-validator](https://github.com/cdimascio/express-openapi-validator) to automatically handle all API validation based on what you've defined in the spec.
+## Tools for development
+| Name |Versión | Scope |
+|--|--|--|
+| NodeJS | 18.12.1 | global |
+| npm| 8.19.2 | global |
+| typescript| 5.2.2 | global |
+| ts-node| 10.9.1 | global |
 
 ## Install Dependencies
 
@@ -56,42 +42,33 @@ npm run compile
 npm start
 ```
 
-## Test It
-
-Run the Mocha unit tests
-
-```shell
-npm test
-```
-
-or debug them
-
-```shell
-npm run test:debug
-```
-
 ## Try It
 * Open your browser to [http://localhost:3000](http://localhost:3000)
-* Invoke the `/examples` endpoint 
+* Invoke the `/photos` endpoint 
   ```shell
-  curl http://localhost:3000/api/v1/examples
+  curl http://localhost:3000/externalapi/photos
+  ```
+ * Invoke the `/photos/:id` endpoint 
+  ```shell
+  curl http://localhost:3000/externalapi/photos/:id
   ```
 
+## Docker
+In the root of the project you would see **Dockerfile**
 
-## Debug It
+#### Create image
+```shell
+  #On the root of the project
+  docker build -t image:tag .
+  ```
 
-#### Debug the server:
+#### Run container
+By default the expose port always will be on port 3000, if you want to change it, you will need to update **server config (index.ts)** and **dockerfile**
+```shell
+  docker run -p 3000:3000 image-id
+  ```
 
-```
-npm run dev:debug
-```
+## Special development tool
 
-#### Debug Tests
-
-```
-npm run test:debug
-```
-
-#### Debug with VSCode
-
-Add these [contents](https://github.com/cdimascio/generator-express-no-stress/blob/next/assets/.vscode/launch.json) to your `.vscode/launch.json` file
+In order to satisfy the request with management and process data, I decided to use **RxJS** library. This library is useful for process large data and it has operators with differents purposes.
+![enter image description here](https://rxjs.dev/generated/images/marketing/home/Rx_Logo-512-512.png)
