@@ -70,5 +70,6 @@ By default the expose port always will be on port 3000, if you want to change it
 
 ## Special development tool
 
-In order to satisfy the request with management and process data, I decided to use **RxJS** library. This library is useful for process large data and it has operators with differents purposes.
+In order to satisfy the request with data management and data process, I decided to use **RxJS** library. This library is useful for process large data and it has operators with differents purposes. In my case, I chose it because the scenary included three } source endpoints and I needed to merge in only one result (data enrichment), so in order to provide a optimize solution, I prefered to use operators of RxJS like: mergeMap, switchMap, map and arrays functions of javascript in order to get it.
+
 ![enter image description here](https://rxjs.dev/generated/images/marketing/home/Rx_Logo-512-512.png)
